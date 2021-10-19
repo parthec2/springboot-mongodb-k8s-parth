@@ -20,7 +20,7 @@ private String clientRegion;</br>
 a) **Login to GCP(Google Cloud Provider)**,go to Kubernetes Engine menu-->Select Cluster-->Create New Cluster--> Connect (make sure kubernetes in up ,run command - "kubectl get nodes" to check)</br>
 b) **Clone the git code** using cmd-</br>&nbsp;&nbsp; git clone https://github.com/parthec2/springboot-mongodb-k8s-parth.git  , it will download whole code in kube cluster</br>
 c) Run - Cd springbootmongodb-k8s-parth, then **Build code using cmd**-</br>&nbsp;&nbsp;  mvn install -DskipTests </br>
-b) Once jar is created, then **create image using DockerFile by command** -</br>&nbsp;&nbsp; Docker build –t parthec2/spring-mongo-service</br>
+b) Once jar is created, then **create image using DockerFile by command** -</br>&nbsp;&nbsp; docker build ./ –t parthec2/spring-mongo-service</br>
 c) **Push jar to docker hub by cmd**-</br>&nbsp;&nbsp; docker push ( Login to docker hub, it should have push image to your docker hub)</br>
 d) Now run - cd src/main/resources and  **create secrets and configmap** by using below commands
   </br>&nbsp;&nbsp;&nbsp; kubectl create -f mongo-secret.yml

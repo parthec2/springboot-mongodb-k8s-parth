@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: spring-mongo-service
-          image: parthec2/spring-mongo-service
+          image: parthec2/spring-mongo-service:1.0
           ports:
           - containerPort: 8080
           env:

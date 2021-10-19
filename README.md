@@ -1,7 +1,8 @@
 # springboot-mongodb-k8s-parth
 Brief Introduction</br>
-I have created REST API using Springboot and Spring cloud which performs CRUD operations (GET,POST,UPDATE,DELETE) , where data is saved into mongo db.
-Both Spring boot and Mongo db are hosted in kubernetes env(GCP-Google Cloud Provider) where Springboot is expose via LoadBalancer service to internet and Mongo is expose via Cluster IP service where spring boot app will connect to mongo db via mong-service.</br>
+Hello Firends,</br>
+I have created REST API using Springboot and Spring cloud application which performs CRUD operations (GET,POST,UPDATE,DELETE) , where data is saved into mongo db.
+Both Spring boot and Mongo db are hosted in kubernetes env(GCP-Google Cloud Provider) where Springboot is expose via LoadBalancer service to internet and Mongo is expose via Cluster IP service where spring boot app will connect to mongo db via mong-service and end user can connect to API using springboot-service Loadbalancer External IP.</br>
 **Lets understand all moving parts of code and deployment in brief.**</br>
 
 **ClientController.java** – It has code which performs GET,POST,UPDATE,DELETE. </br>
@@ -14,8 +15,8 @@ private Integer gfcid;</br>
 private String clientRegion;</br>
 **ClientRepo.java** – It is repo which performs CRUD operations in mongo db.</br>
 **application.yml**- It has db connection information where all db details are fetch from kubernetes configmap and secretes.Pls make sure to set default mongo db port-27017.</br> </br>
-Now once code is ready then login to GCP , follow below steps to do deployment up and running in GCP Kubernetes env,</br></br>
-a) **Login to GCP(Google Cloud Provider)**,go to Kubernetes Engine- Cluster-->Create New Cluster--> Connect (make sure kubernetes in up ,run command -kubectl get nodes to check)</br>
+#Once code is ready then login to GCP , follow below steps to make deployment up and running in GCP Kubernetes env,</br></br>
+a) **Login to GCP(Google Cloud Provider)**,go to Kubernetes Engine menu-->Select Cluster-->Create New Cluster--> Connect (make sure kubernetes in up ,run command - "kubectl get nodes" to check)</br>
 b) **Clone the git code** using cmd-</br>&nbsp;&nbsp; git clone https://github.com/parthec2/springboot-mongodb-k8s-parth.git  , it will download whole code in kube cluster</br>
 c) Run - Cd springbootmongodb-k8s-parth, then **Build code using cmd**-</br>&nbsp;&nbsp;  mvn install -DskipTests </br>
 b) Once jar is created, then **create image using DockerFile by command** -</br>&nbsp;&nbsp; Docker build –t parthec2/spring-mongo-service</br>
@@ -31,7 +32,7 @@ g)**Create mongo db deployment(pods) and service(type-ClusterIP)** using below c
   </br>&nbsp;&nbsp;&nbsp; kubectl create -f mongo-service.yml</br>
   **Check mongo pods health using beow command**- 
   </br>&nbsp;&nbsp;&nbsp; kubectl exec -it pod/<mongo-pod-name> -- /bin/sh </br>
-  </br>&nbsp;&nbsp;&nbsp;&nbsp; #mongo -u test -p test@123</br>
+  </br>&nbsp;&nbsp;&nbsp;&nbsp; #mongo -u test -p test@123</br>  (where username is "test" and password is "test@123" which is stored in secret file in base64 encryption)
   </br>&nbsp;&nbsp;&nbsp;&nbsp; #show dbs</br>
   </br>&nbsp;&nbsp;&nbsp;&nbsp; #use admin</br>
   </br>&nbsp;&nbsp;&nbsp;&nbsp; #show collections</br>
@@ -74,7 +75,7 @@ Go to body--select raw-type-JSON
 
 Similary, you can try search by client id(getClient/{id}) and delete by client id (deleteClient/{id}).
 
-Pls email me at parth.ec2@gmail.com for any queries/feedback/suggestions,,,,
-Keep coding,,,Have a ncie day, :)
+Pls email me at parth.ec2@gmail.com for any queries/feedback/suggestions,,,,</br>
+Keep coding,,Spread knowledge,,,Have a Beautiful day, :)
 
 

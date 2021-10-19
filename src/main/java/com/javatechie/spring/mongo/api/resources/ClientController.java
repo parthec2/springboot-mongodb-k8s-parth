@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,8 +35,9 @@ public class ClientController {
 	
 	@PostMapping("/addClient")
 	public String addClient (@RequestBody Client clnt) {
-	    	Client temp=clnt;	
+	    Client temp=clnt;	
 		clientRepo.save(clnt);
+		
 		return "Added Client with name :-" + clnt.getClientName();
 	}
 	
@@ -50,7 +52,7 @@ public class ClientController {
 		existingclient.setGfcid(newClnt.getGfcid());
 		
 		clientRepo.save(existingclient);
-		return "Client Updated-"+ newClnt.getClientName();
+		return "Client Updated-"+newClnt.getClientName();
 	}
 	
 	@DeleteMapping("/deleteClient/{id}")

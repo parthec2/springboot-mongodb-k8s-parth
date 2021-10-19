@@ -34,14 +34,28 @@ public class ClientController {
 	
 	@PostMapping("/addClient")
 	public String addClient (@RequestBody Client clnt) {
-	    Client temp=clnt;	
+	    	Client temp=clnt;	
 		clientRepo.save(clnt);
 		return "Added Client with name :-" + clnt.getClientName();
+	}
+	
+	@PutMapping("/updateClient/{id}")
+	public String updateClient (@PathVariable Long id,@RequestBody Client newClnt) {
+		Optional<Client> objClient = clientRepo.findById(id);
+		Client existingclient = objClient.get();
+		existingclient.setClientID(newClnt.getClientID());
+		existingclient.setClientName(newClnt.getClientName());
+		existingclient.setClientRegion(newClnt.getClientRegion());
+		existingclient.setClientType(newClnt.getClientType());
+		existingclient.setGfcid(newClnt.getGfcid());
+		
+		clientRepo.save(existingclient);
+		return "Client Updated-"+ newClnt.getClientName();
 	}
 	
 	@DeleteMapping("/deleteClient/{id}")
 	public String deleteClient (@PathVariable Long id) {
 		clientRepo.deleteById(id);
-		return "Client Deleted";
+		return "Client Deleted-Id-"+id;
 	}
 }

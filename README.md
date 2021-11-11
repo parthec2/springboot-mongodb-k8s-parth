@@ -26,6 +26,7 @@ c) **Push jar to docker hub by cmd**-</br>&nbsp;&nbsp; docker push parthec2/spri
 d) Now run - cd src/main/resources and  **create secrets and configmap** by using below commands
   </br>&nbsp;&nbsp;&nbsp; kubectl create -f mongo-secret.yml
   </br>&nbsp;&nbsp;&nbsp;&nbsp; kubectl create -f mongo-config.yml
+  </br>
 e) **Create mongo db persistent volumen and claim** using below commands:
   </br>&nbsp;&nbsp;&nbsp; kubectl create -f mongo-pv.yaml
   </br>&nbsp;&nbsp;&nbsp; kubectl create -f mongo-pvc.yaml
@@ -54,9 +55,9 @@ j)**Now,create spring boot deployment(2 Pods) and service(type-LoadBalancer) usi
   **HTTP GET**</br>&nbsp;&nbsp;&nbsp;
   The GET URL will be form as below- :</br>&nbsp;&nbsp;&nbsp;
   Hit  in Postman tool OR browser from your laptop/mobile device</br>&nbsp;&nbsp;&nbsp;
-  http://34.68.140.183:8080/getAllClients
+  http://35.202.38.42:8080/api/getAllClients
   
-  It will return json as below if we have inserted data 
+  It will return json with list of clients as below if we have inserted data 
   </br>
   [
   </br>&nbsp;

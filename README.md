@@ -1,8 +1,9 @@
 # springboot-mongodb-k8s-parth
 Brief Introduction</br>
-Hello Firends,</br>
+Hello Friends,</br>
 I have created REST API using Springboot and Spring cloud application which performs CRUD operations (GET,POST,UPDATE,DELETE) , where data is saved into mongo db.
-Both Spring boot and Mongo db are hosted in kubernetes env(GCP-Google Cloud Provider) where Springboot is expose via LoadBalancer service to internet and Mongo is expose via Cluster IP service where spring boot app will connect to mongo db via mong-service and end user can connect to API using springboot-service Loadbalancer External IP.</br>
+Both Spring boot and Mongo db are hosted in kubernetes env(GCP-Google Cloud Provider) where Springboot is expose via LoadBalancer service to internet and Mongo is expose via Cluster IP service.
+Spring boot app will connect to mongo db via "mongo-service" and end user can connect to API using "springboot-service" Loadbalancer External IP.</br>
 
 **Lets understand all moving parts of code and deployment in brief.**</br>
 
